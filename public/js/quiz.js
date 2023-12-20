@@ -74,8 +74,8 @@ startButton.addEventListener("click", async () => {
         Gender: document.getElementById('Gender').value.trim(),
         MobileNumber: document.getElementById('MobileNumber').value.trim()
     }
-    console.log(userdata);
-    await fetch('/login', {
+    // console.log(userdata);
+    const response =await fetch('/login', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -83,29 +83,25 @@ startButton.addEventListener("click", async () => {
         },
         body: JSON.stringify(userdata)
     })
-        .then(response => {
-            if (response.status === 400) {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Thank You',
-                    html:`Already submitted quiz! <div style="width:100%;display:flex;align-items:center;justify-content:space-evenly;"> Follow for results  <a href="https://www.instagram.com/ethiccraft_ymca/"><i class="fab fa-instagram fa-3x" style="color: rgb(212, 43, 212)"></i></a> <a href="https://chat.whatsapp.com/KRjUaGoQXAsJybKFBg2HHU"><i class="fab fa-whatsapp fa-3x" style="color: green"></i></a> </div>` ,
-                })
-                console.log("You have already submitted the Quiz");
-            }
-            else {
-                console.log("You have not submitted the Quiz");
-                startScreen.classList.add("hide");
-                displayContainer.classList.remove("hide");
-                initial();
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
 
+    const data = await response.json();
+    questionCount = data.Currcount;
+    scoreCount = data.Score;
+
+    if (response.status === 400) {
+        Swal.fire({
+            icon: 'info',
+            title: 'Thank You',
+            html: `Already submitted quiz! <div style="width:100%;display:flex;align-items:center;justify-content:space-evenly;"> Follow for results  <a href="https://www.instagram.com/ethiccraft_ymca/"><i class="fab fa-instagram fa-3x" style="color: rgb(212, 43, 212)"></i></a> <a href="https://chat.whatsapp.com/KRjUaGoQXAsJybKFBg2HHU"><i class="fab fa-whatsapp fa-3x" style="color: green"></i></a> </div>`,
+        })
+        console.log("You have already submitted the Quiz");
+    }
+    else {
+        console.log("You have not submitted the Quiz");
+        startScreen.classList.add("hide");
+        displayContainer.classList.remove("hide");
+        initial();
+    }
 
 });
 
@@ -136,6 +132,7 @@ const quizDisplay = (questionCount) => {
 //Quiz Creation
 function quizCreator() {
     //randomly sort questions
+    
     quizArray.sort(() => Math.random() - 0.5);
     //generate quiz
     for (let i of quizArray) {
@@ -144,7 +141,7 @@ function quizCreator() {
         let div = document.createElement("div");
         div.classList.add("container-mid", "hide");
         //question number
-        countOfQuestion.innerHTML = 1 + " of " + totalQuestions + " Question";
+        countOfQuestion.innerHTML = (questionCount+1) + " of " + totalQuestions + " Question";
         //question
         let question_DIV = document.createElement("p");
         question_DIV.classList.add("question");
@@ -181,8 +178,8 @@ function checker(userOption) {
 //initial setup
 function initial() {
     quizContainer.innerHTML = "";
-    questionCount = 0;
-    scoreCount = 0;
+    // questionCount = 0;
+    // scoreCount = 0;
     count = 31;
     clearInterval(countdown);
     timerDisplay();

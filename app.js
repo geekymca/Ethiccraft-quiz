@@ -41,13 +41,12 @@ app.post('/login', (req, res) => {
     // Check if the email is already registered
     User.findOne({RollNumber: RollNumber}).then(existingUser => {
         if (existingUser) {
-            return res.status(400).send(JSON.stringify({message: 'You have already given the Quiz'}));
-
-            // if (existingUser.Currcount == 20){
-            // }
-            // else{
-            //     return res.status(200).send(JSON.stringify({RollNumber: RollNumber, Currcount: existingUser.Currcount, Score: existingUser.Score}));
-            // }
+            if (existingUser.Currcount >= 20){
+                return res.status(400).send(JSON.stringify({message: 'You have already given the Quiz'}));
+            }
+            else{
+                return res.status(200).send(JSON.stringify({RollNumber: RollNumber, Currcount: existingUser.Currcount, Score: existingUser.Score}));
+            }
         }
         // Create a new user
         const newUser = new User({Name: Name, RollNumber: RollNumber, BranchYear: BranchYear, Gender: Gender, MobileNumber: MobileNumber, Currcount: 0, Score: 0});
