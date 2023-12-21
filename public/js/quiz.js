@@ -5,7 +5,6 @@ let nextBtn = document.getElementById("next-button");
 let countOfQuestion = document.querySelector(".number-of-question");
 let displayContainer = document.getElementById("display-container");
 let scoreContainer = document.querySelector(".score-container");
-let restart = document.getElementById("restart");
 let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
@@ -27,8 +26,12 @@ function displayImageForDuration(duration) {
         startImage.style.display = "none"; // Hide the image after the duration
         landingPage.style.display = "none";
         // Show the quiz content after hiding the image
-        document.getElementById("start-screen").classList.remove("hide");
-        startScreen.classList.remove("hide");
+        let date = new Date();
+        if (date.getHours() >= 14 || date.getHours() < 10) {
+        }
+        else {
+            startScreen.classList.remove("hide");
+        }
     }, duration);
 }
 
@@ -190,6 +193,10 @@ function initial() {
 
 //Next Button
 nextBtn.addEventListener("click", (displayNext = () => {
+
+    if (questionCount > totalQuestions) {
+        return;
+    }
     //get user selected option
     let question =
         document.getElementsByClassName("container-mid")[questionCount];
@@ -258,7 +265,7 @@ nextBtn.addEventListener("click", (displayNext = () => {
 
 window.addEventListener("load", (event) => {
     var date = new Date();
-    if (date.getHours() >= 14 || date.getHours()){
+    if (date.getHours() >= 14 || date.getHours() < 10){
         Swal.fire({
             icon:"info",
             html:" Thank you for your today's participation.<br>Quiz will be live again from December 22, 10am<br><b>Regards, Ethiccraft Club</b>"
