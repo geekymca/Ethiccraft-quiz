@@ -28,6 +28,7 @@ function displayImageForDuration(duration) {
         landingPage.style.display = "none";
         // Show the quiz content after hiding the image
         document.getElementById("start-screen").classList.remove("hide");
+        startScreen.classList.remove("hide");
     }, duration);
 }
 
@@ -255,11 +256,21 @@ nextBtn.addEventListener("click", (displayNext = () => {
         });
 }));
 
-
-Swal.fire({
-    title: "<i>Please Read Carefully</i>",
-    html: "1. There will be 20 questions.<br>2. Each question will have 4 options.<br>3. You have 30 seconds to answer each question.<br>4. After submitting please join the whatsapp group!<br>5. <b>Do not refresh the page</b>",
-    confirmButtonText: "<u>Done</u>",
-    confirmButtonColor: "#00b300",
-    allowOutsideClick: false,
+window.addEventListener("load", (event) => {
+    var date = new Date();
+    if (date.getHours() >= 14 || date.getHours()){
+        Swal.fire({
+            icon:"info",
+            html:" Thank you for your today's participation.<br>Quiz will be live again from December 22, 10am<br><b>Regards, Ethiccraft Club</b>"
+        });
+    }
+    else {
+      Swal.fire({
+        title: "<i>Please Read Carefully</i>",
+        html: "1. There will be 20 questions.<br>2. Each question will have 4 options.<br>3. You have 30 seconds to answer each question.<br>4. After submitting please join the whatsapp group!<br>5. <b>Do not refresh the page</b>",
+        confirmButtonText: "<u>Done</u>",
+        confirmButtonColor: "#00b300",
+        allowOutsideClick: false,
+      });
+    }
 });
