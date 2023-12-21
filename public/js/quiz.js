@@ -30,13 +30,13 @@ function displayImageForDuration(duration) {
         if (date.getHours() >= 14 || date.getHours() < 10) {
         }
         else {
+            document.querySelector(".prize-button").classList.remove("hide");
             startScreen.classList.remove("hide");
         }
     }, duration);
 }
 
 // Call the function to display the image for 10 seconds (10000 milliseconds)
-displayImageForDuration(3000);
 
 document.addEventListener("DOMContentLoaded", function () {
     const nameInput = document.getElementById('Name');
@@ -264,6 +264,7 @@ nextBtn.addEventListener("click", (displayNext = () => {
 }));
 
 window.addEventListener("load", (event) => {
+    displayImageForDuration(3000);
     var date = new Date();
     if (date.getHours() >= 14 || date.getHours() < 10){
         Swal.fire({
