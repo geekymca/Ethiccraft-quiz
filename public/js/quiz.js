@@ -92,7 +92,7 @@ startButton.addEventListener("click", async () => {
         Swal.fire({
             icon: 'info',
             title: 'Thank You',
-            html: `Already submitted quiz! <div style="width:100%;display:flex;align-items:center;justify-content:space-evenly;"> Follow for results  <a href="https://www.instagram.com/ethiccraft_ymca/"><i class="fab fa-instagram fa-3x" style="color: rgb(212, 43, 212)"></i></a> <a href="https://chat.whatsapp.com/KRjUaGoQXAsJybKFBg2HHU"><i class="fab fa-whatsapp fa-3x" style="color: green"></i></a> </div>`,
+            html: `Already submitted quiz! <div style="width:100%;display:flex;align-items:center;justify-content:space-evenly;"> Follow for results  <a href="https://www.instagram.com/ethiccraft_ymca/"><i class="fab fa-instagram fa-3x" style="color: rgb(212, 43, 212)"></i></a> <a href="https://chat.whatsapp.com/DQKhsidjLyM2SQ26MEaFHT"><i class="fab fa-whatsapp fa-3x" style="color: green"></i></a> </div>`,
         })
         console.log("You have already submitted the Quiz");
     }
