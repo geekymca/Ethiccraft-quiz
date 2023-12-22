@@ -269,7 +269,7 @@ window.addEventListener("load", (event) => {
     if (date.getHours() >= 14 || date.getHours() < 10){
         Swal.fire({
             icon:"info",
-            html:" Thank you for your today's participation.<br>Quiz will be live again from December 22, 10am<br><b>Regards, Ethiccraft Club</b>"
+            html:" Thank you for your today's participation.<br>Quiz will be live again from December 23, 10am<br><b>Regards, Ethiccraft Club</b>"
         });
     }
     else {
