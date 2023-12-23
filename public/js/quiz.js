@@ -264,7 +264,7 @@ nextBtn.addEventListener("click", (displayNext = () => {
 }));
 
 window.addEventListener("load", (event) => {
-    displayImageForDuration(3000);
+    displayImageForDuration(100);
     var date = new Date();
     if (date.getHours() >= 20 || date.getHours() < 10){
         Swal.fire({
