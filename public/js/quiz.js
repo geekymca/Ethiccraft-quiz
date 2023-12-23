@@ -27,7 +27,7 @@ function displayImageForDuration(duration) {
         landingPage.style.display = "none";
         // Show the quiz content after hiding the image
         let date = new Date();
-        if (date.getHours() >= 23 || date.getHours() < 10) {
+        if (date.getHours() <= 23) {
         }
         else {
             document.querySelector(".prize-button").classList.remove("hide");
@@ -79,7 +79,7 @@ startButton.addEventListener("click", async () => {
         MobileNumber: document.getElementById('MobileNumber').value.trim()
     }
     // console.log(userdata);
-    const response =await fetch('/login', {
+    const response = await fetch('/login', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -136,7 +136,7 @@ const quizDisplay = (questionCount) => {
 //Quiz Creation
 function quizCreator() {
     //randomly sort questions
-    
+
     quizArray.sort(() => Math.random() - 0.5);
     //generate quiz
     for (let i of quizArray) {
@@ -145,7 +145,7 @@ function quizCreator() {
         let div = document.createElement("div");
         div.classList.add("container-mid", "hide");
         //question number
-        countOfQuestion.innerHTML = (questionCount+1) + " of " + totalQuestions + " Question";
+        countOfQuestion.innerHTML = (questionCount + 1) + " of " + totalQuestions + " Question";
         //question
         let question_DIV = document.createElement("p");
         question_DIV.classList.add("question");
@@ -264,21 +264,21 @@ nextBtn.addEventListener("click", (displayNext = () => {
 }));
 
 window.addEventListener("load", (event) => {
-    displayImageForDuration(100);
+    displayImageForDuration(1000);
     var date = new Date();
-    if (date.getHours() >= 23 || date.getHours() < 10){
+    if (date.getHours() <= 23) {
         Swal.fire({
-            icon:"info",
-            html:" Thank you for your today's participation.<br>Quiz will be live again from December 23, 10am<br><b>Regards, Ethiccraft Club</b>"
+            icon: "info",
+            html: `<b>Thank you</b> for participating in Gita quiz <br>For <b>results</b>, refer to : <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;"><a href="https://www.instagram.com/ethiccraft_ymca/"><i class="fab fa-instagram fa-3x" style="color: rgb(212, 43, 212)"></i></a> <a href="https://chat.whatsapp.com/DQKhsidjLyM2SQ26MEaFHT"><i class="fab fa-whatsapp fa-3x" style="color: green"></i></a> </div> @December, 26`,
         });
     }
     else {
-      Swal.fire({
-        title: "<i>Please Read Carefully</i>",
-        html: "1. There will be 20 questions.<br>2. Each question will have 4 options.<br>3. You have 30 seconds to answer each question.<br>4. After submitting please join the whatsapp group!<br>5. <b>Do not refresh the page</b>",
-        confirmButtonText: "<u>Done</u>",
-        confirmButtonColor: "#00b300",
-        allowOutsideClick: false,
-      });
+        Swal.fire({
+            title: "<i>Please Read Carefully</i>",
+            html: "1. There will be 20 questions.<br>2. Each question will have 4 options.<br>3. You have 30 seconds to answer each question.<br>4. After submitting please join the whatsapp group!<br>5. <b>Do not refresh the page</b>",
+            confirmButtonText: "<u>Done</u>",
+            confirmButtonColor: "#00b300",
+            allowOutsideClick: false,
+        });
     }
 });
