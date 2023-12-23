@@ -27,7 +27,7 @@ function displayImageForDuration(duration) {
         landingPage.style.display = "none";
         // Show the quiz content after hiding the image
         let date = new Date();
-        if (date.getHours() >= 20 || date.getHours() < 10) {
+        if (date.getHours() >= 23 || date.getHours() < 10) {
         }
         else {
             document.querySelector(".prize-button").classList.remove("hide");
@@ -266,7 +266,7 @@ nextBtn.addEventListener("click", (displayNext = () => {
 window.addEventListener("load", (event) => {
     displayImageForDuration(100);
     var date = new Date();
-    if (date.getHours() >= 20 || date.getHours() < 10){
+    if (date.getHours() >= 23 || date.getHours() < 10){
         Swal.fire({
             icon:"info",
             html:" Thank you for your today's participation.<br>Quiz will be live again from December 23, 10am<br><b>Regards, Ethiccraft Club</b>"
